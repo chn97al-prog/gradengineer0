@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تصميم الملكي | تجهيزات المهندس</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap">
+<style>
+  body { overflow: hidden; height: 100vh; }
+  .site-header { position: static; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="row">
+    <a href="index.html" class="brand">
+      <svg class="seal" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="18" stroke="#C9A227" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="12" stroke="#E4C660" stroke-width="1"/>
+        <text x="20" y="25" text-anchor="middle" font-size="14" fill="#E4C660" font-family="Aref Ruqaa">م</text>
+      </svg>
+      تجهيزات المهندس
+    </a>
+    <nav class="nav-links">
+      <a href="index.html">الرئيسية</a>
+      <a href="services.html">الموديلات</a>
+    </nav>
+    <a href="services.html" class="btn btn-outline">رجوع للموديلات</a>
+  </div>
+</header>
+
+<div class="customizer-wrap">
+
+  <div class="stage-col">
+    <div class="stage-hint">اسحب باصبعك أو الماوس لتدوير الموديل</div>
+    <div id="three-canvas-holder"></div>
+    <div class="stage-toolbar">
+      <button id="btn-rotate-left" title="تدوير يسار">↺</button>
+      <button id="btn-reset-view" title="إعادة الزاوية">⟳</button>
+      <button id="btn-rotate-right" title="تدوير يمين">↻</button>
+      <button id="btn-zoom-in" title="تكبير">+</button>
+      <button id="btn-zoom-out" title="تصغير">−</button>
+      <button id="btn-export-png" title="تنزيل صورة PNG">⭳</button>
+    </div>
+  </div>
+
+  <div class="panel-col">
+    <h2>الموديل الملكي</h2>
+    <div class="model-name-sub">صمم وشاحك وقبعتك بشكل حي</div>
+
+    <div class="field">
+      <label for="sash-text">النص على الوشاح</label>
+      <input type="text" id="sash-text" maxlength="24" placeholder="مثال: مصطفى - هندسة مدنية">
+    </div>
+
+    <div class="field">
+      <label for="cap-text">النص على القبعة</label>
+      <input type="text" id="cap-text" maxlength="10" placeholder="مثال: دفعة ٢٠٢٦">
+    </div>
+
+    <div class="field">
+      <label>لون القماش</label>
+      <div class="swatches" id="color-swatches"></div>
+    </div>
+
+    <div class="field">
+      <label>خط الكتابة</label>
+      <div class="font-options" id="font-options"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="summary-box">
+      <div><span>الموديل</span><strong>الملكي</strong></div>
+      <div><span>السعر التقديري</span><strong>25,000 د.ع</strong></div>
+    </div>
+
+    <button class="btn-confirm" id="btn-confirm">تم، أرسل الطلب</button>
+    <div class="status-msg" id="status-msg"></div>
+  </div>
+
+</div>
+
+<!-- Modal: customer info -->
+<div class="modal-overlay" id="modal-overlay">
+  <div class="modal-box">
+    <h3>بيانات التواصل</h3>
+    <div class="field">
+      <label for="cust-name">الاسم</label>
+      <input type="text" id="cust-name" placeholder="اسمك الكامل">
+    </div>
+    <div class="field">
+      <label for="cust-phone">رقم الهاتف</label>
+      <input type="text" id="cust-phone" placeholder="07xxxxxxxxx">
+    </div>
+    <div class="field">
+      <label for="cust-college">الكلية / القسم</label>
+      <input type="text" id="cust-college" placeholder="مثال: كلية الهندسة - قسم مدني">
+    </div>
+    <button class="btn-confirm" id="btn-final-submit">تأكيد إرسال الطلب</button>
+    <button class="btn btn-outline" id="btn-cancel-modal" style="width:100%; margin-top:10px; justify-content:center;">رجوع</button>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="assets/js/customizer.js"></script>
+
+</body>
+</html>

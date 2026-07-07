@@ -1,0 +1,9 @@
+{
+  "name": "tajhizat-almohandes",
+  "version": "1.0.0",
+  "private": true,
+  "description": "موقع تجهيزات المهندس - طلب وتصميم أزياء التخرج",
+  "dependencies": {
+    "googleapis": "^140.0.0"
+  }
+}
