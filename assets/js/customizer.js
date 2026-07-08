@@ -65,33 +65,40 @@ controls.target.set(0, 0.1, 0);
 controls.update();
 
 /* ============================================
-   المانيكان (جسم مبسّط)
+   المانيكان المطور (مطابق للشكل الكلاسيكي)
    ============================================ */
 const mannequinGroup = new THREE.Group();
 scene.add(mannequinGroup);
 
-const bodyMat = new THREE.MeshStandardMaterial({ color: 0xcfc7b3, roughness: 0.75, metalness: 0.05 });
-const standMat = new THREE.MeshStandardMaterial({ color: 0x2a2118, roughness: 0.6 });
+// خامات القماش والخشب
+const fabricMat = new THREE.MeshStandardMaterial({ color: 0xe3d5b8, roughness: 0.9 });
+const woodMat = new THREE.MeshStandardMaterial({ color: 0x4a3728, roughness: 0.5 });
 
-const base = new THREE.Mesh(new THREE.CylinderGeometry(0.55, 0.6, 0.08, 40), standMat);
+// 1. القاعدة الخشبية الثلاثية
+const base = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.6, 0.1, 32), woodMat);
 base.position.y = -2.2;
 mannequinGroup.add(base);
 
-const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.06, 1.3, 20), standMat);
-pole.position.y = -1.55;
+// 2. العمود الخشبي
+const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.12, 1.4, 16), woodMat);
+pole.position.y = -1.45;
 mannequinGroup.add(pole);
 
-const torso = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.42, 1.7, 40, 8), bodyMat);
-torso.position.y = 0;
+// 3. الجذع (Torso) - تم تعديل الأبعاد ليكون أنحف عند الخصر وأعرض عند الأكتاف
+const torsoGeo = new THREE.CylinderGeometry(0.45, 0.35, 1.4, 40);
+const torso = new THREE.Mesh(torsoGeo, fabricMat);
+torso.position.y = 0.1;
 mannequinGroup.add(torso);
 
-const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.18, 0.28, 20), bodyMat);
-neck.position.y = 0.99;
+// 4. الرقبة (Neck)
+const neck = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 0.3, 20), fabricMat);
+neck.position.y = 0.95;
 mannequinGroup.add(neck);
 
-const head = new THREE.Mesh(new THREE.SphereGeometry(0.32, 32, 32), bodyMat);
-head.position.y = 1.44;
-mannequinGroup.add(head);
+// 5. الكرة الخشبية أعلى الرقبة
+const knob = new THREE.Mesh(new THREE.SphereGeometry(0.2, 32, 32), woodMat);
+knob.position.y = 1.15;
+mannequinGroup.add(knob);
 
 /* ============================================
    الوشاح — شريط منحني حول الجسم
